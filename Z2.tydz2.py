@@ -1,4 +1,4 @@
-kwota = int(input("Podaj kwotę (w groszach):"))
+kwota = int(input("Podaj kwotę (w groszach): "))
 l_piątek=0
 l_dwójek=0
 l_jedynek=0
