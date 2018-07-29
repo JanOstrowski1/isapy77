@@ -1,10 +1,20 @@
 import string
-plik = open("plik1.csv", "r+")
-
 baza_znakow = string.ascii_letters + string.digits + string.punctuation
-tekst = plik.read()
-print("W podanym pliku : ")
-for znak in baza_znakow:
-    if tekst.count(znak) != 0:
-        print(("Znak {}  występuje : {} razy " ).format(znak, tekst.count(znak),))
-plik.close()
+def statystyki_tekstu() :
+    try :
+        plik = open(input("Podaj nazwę pliku : "), "r+")
+
+    except FileNotFoundError :
+        print("Podany plik nie istnieje !")
+        statystyki_tekstu()
+    except:
+        print("Upss! Wystąpił nie przewidziany błąd ¯\_(ツ)_/¯.")
+        statystyki_tekstu()
+    tekst = plik.read()
+    print("W podanym pliku : ")
+    for znak in baza_znakow:
+        if tekst.count(znak) != 0:
+            print(("Znak {}  występuje : {} razy ").format(znak, tekst.count(znak), ))
+    plik.close()
+statystyki_tekstu()
+
