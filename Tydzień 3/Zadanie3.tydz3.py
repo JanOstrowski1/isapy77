@@ -9,8 +9,33 @@ print("Wpisz \"1\" jeśli chcesz dodać nowy wpis")
 print("Wpisz \"2\" jeśli chcesz wyświetlić wyświetlić wszysykie wpisy")
 print("Wpisz \"3\" jeśli chcesz wyświetlićwpisy z określownej daty" )
 print("Wpisz \"4\" jeśli chcesz przeglądać wpisy po koleji ")
+zbiór_wpisów=[]
+daty={}
 def pamiętnik():
     try :
-        x = input("-->")
+        x = int(input("-->"))
     except ValueError :
-        print("Wpisałeś liczbę z poza zakresu. Spróbuj jeszcze raz ;-) ")
+        print("Podana wartość nie jest liczbą ! Spróbuj ponownie!")
+        pamiętnik()
+    if x==1:
+        wpis =input("Treść wpisu :")
+        data=input("Podaj datę wpisu :")
+        daty[data]=wpis
+        zbiór_wpisów.append(daty)
+        pamiętnik()
+    if x==2:
+        print("Oto dotychczasowe wpisy:")
+        print(zbiór_wpisów)
+        pamiętnik()
+    if x==3:
+        try:
+            data=input("Podaj datę z której mam wyświetlić posty: ")
+            print(daty[data])
+            pamiętnik()
+        except:
+            print("Wpisana data  nie istnieje :-/")
+            pamiętnik()
+
+
+pamiętnik()
+
