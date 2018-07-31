@@ -1,5 +1,5 @@
 import string
-baza_znakow = string.ascii_letters + string.digits + string.punctuation
+znaki = string.ascii_letters + string.digits + string.punctuation
 def statystyki_tekstu() :
     try :
         plik = open(input("Podaj nazwę pliku : "), "r+")
@@ -12,7 +12,7 @@ def statystyki_tekstu() :
         statystyki_tekstu()
     tekst = plik.read()
     print("W podanym pliku : ")
-    for znak in baza_znakow:
+    for znak in znaki:
         if tekst.count(znak) != 0:
             print(("Znak {}  występuje : {} razy ").format(znak, tekst.count(znak), ))
     plik.close()
