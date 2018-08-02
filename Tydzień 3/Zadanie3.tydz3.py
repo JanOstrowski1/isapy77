@@ -1,3 +1,5 @@
+from wspomnienia import Pamietnik
+
 #3) Napisz program który będzie pamiętnikiem. Niech posiada opcje:
  #  - dodawania wpisu do pamiętnika pod określną datą
   # - wyświetlanie wszystkich wpisów z pamiętnika
@@ -10,7 +12,8 @@ print("Wpisz \"2\" jeśli chcesz wyświetlić wyświetlić wszysykie wpisy")
 print("Wpisz \"3\" jeśli chcesz wyświetlićwpisy z określownej daty" )
 print("Wpisz \"4\" jeśli chcesz przeglądać wpisy po koleji ")
 zbiór_wpisów=[]
-daty={}
+i=1
+wpis=Pamietnik("","")
 def pamiętnik():
     try :
         x = int(input("-->"))
@@ -18,24 +21,28 @@ def pamiętnik():
         print("Podana wartość nie jest liczbą ! Spróbuj ponownie!")
         pamiętnik()
     if x==1:
-        wpis =input("Treść wpisu :")
-        data=input("Podaj datę wpisu :")
-        daty[data]=wpis
-        zbiór_wpisów.append(daty)
+        wpis.dodawanie_wpisu()
+        zbiór_wpisów.append(wpis)
+
         pamiętnik()
     if x==2:
-        print("Oto dotychczasowe wpisy:")
-        print(zbiór_wpisów)
+        for element in zbiór_wpisów:
+            element.wyswietlenie_wpisu()
         pamiętnik()
     if x==3:
-        try:
-            data=input("Podaj datę z której mam wyświetlić posty: ")
-            print(daty[data])
-            pamiętnik()
-        except:
-            print("Wpisana data  nie istnieje :-/")
-            pamiętnik()
-
+        szukana_data=input("Podaj datę :")
+        for element in zbiór_wpisów:
+            if element.data == szukana_data:
+                element.wyswietlenie_wpisu()
+            else:
+                "Nie posiadasz wpisów z podanej daty ¯\_(ツ)_/¯"
+        pamiętnik()
+    if x==4:
+        print("wip")
+        pamiętnik()
+    else:
+        print("Liczba z poza zasięgu ¯\_(ツ)_/¯")
+        pamiętnik()
 
 pamiętnik()
 
