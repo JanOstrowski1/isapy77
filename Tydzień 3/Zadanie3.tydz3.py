@@ -1,4 +1,12 @@
-from wspomnienia import Pamietnik
+class Pamietnik(object):
+    def __init__(self,wpis,data):
+        self.wpis=wpis
+        self.data=data
+    def dodawanie_wpisu(self):
+        self.wpis=input("Wpisz tutaj treść wpisu:")
+        self.data=input("Podaj datę wpisu :")
+    def wyswietlenie_wpisu(self):
+        print("Data wpisu : " +str(self.data) + "\n" + "Treść wpisu : "+ str(self.wpis)+ "\n")
 
 #3) Napisz program który będzie pamiętnikiem. Niech posiada opcje:
  #  - dodawania wpisu do pamiętnika pod określną datą
@@ -24,6 +32,7 @@ def pamiętnik():
         wpis.dodawanie_wpisu()
         zbiór_wpisów.append(wpis)
 
+
         pamiętnik()
     if x==2:
         for element in zbiór_wpisów:
@@ -35,14 +44,42 @@ def pamiętnik():
             if element.data == szukana_data:
                 element.wyswietlenie_wpisu()
             else:
-                "Nie posiadasz wpisów z podanej daty ¯\_(ツ)_/¯"
+                print("Nie posiadasz wpisów z podanej daty ¯\_(ツ)_/¯")
         pamiętnik()
     if x==4:
-        print("wip")
+        i = 0
+        wpis_do_wyswietlenia = zbiór_wpisów[i]
+        wpis_do_wyswietlenia.wyswietlenie_wpisu()
+        print("Jeśli chcesz wyświetlić następny wpis wpisz : \"n\" \n Jeśli chcesz wyświtlić poprzedni wpis wciśnij \"p\" \n Jeśli chcesz powrócić do Menu wciśnij dowolny inny klawisz :-)")
+        while True :
+           z=input(" \n -->  ")
+           dlugosc_listy=len(zbiór_wpisów)
+           if z== "n":
+               i+=1
+               if i==dlugosc_listy:
+                    i=-1
+                    wpis_do_wyswietlenia = zbiór_wpisów[i]
+                    wpis_do_wyswietlenia.wyswietlenie_wpisu()
+               else:
+                   wpis_do_wyswietlenia = zbiór_wpisów[i]
+                   wpis_do_wyswietlenia.wyswietlenie_wpisu()
+           elif z=="p":
+               i-=1
+               if i == dlugosc_listy:
+                   i=-1
+                   wpis_do_wyswietlenia = zbiór_wpisów[i]
+                   wpis_do_wyswietlenia.wyswietlenie_wpisu()
+               else:
+                   wpis_do_wyswietlenia = zbiór_wpisów[i]
+                   wpis_do_wyswietlenia.wyswietlenie_wpisu()
+
+           else:
+               print("Powrót do menu")
+               break
         pamiętnik()
+
     else:
         print("Liczba z poza zasięgu ¯\_(ツ)_/¯")
         pamiętnik()
 
 pamiętnik()
-
